@@ -13,7 +13,7 @@ setup(
     license='MIT License',
     author='Gordon T. Luu',
     author_email='gordon.luu@bruker.com',
-    packages=['mdd'],
+    packages=['mdd', 'mdd.spectral_libraries', 'mdd.target_lists'],
     description='A simple GUI to download publicly available databases for use with the annotation tool in MetaboScape.',
     entry_points={'console_scripts': ['metaboscape_database_downloader=mdd.gui:main']},
     install_requires=install_requires,

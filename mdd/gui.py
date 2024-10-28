@@ -51,10 +51,17 @@ def main():
                                                    msdial.DOWNLOAD_LINKS]
                                  for key, value in link_dict.items()}
             db_name = '|'.join(db_name.split('|')[1:])
-            url = sl_download_links[db_name]
-            file_path = os.path.join(outdir, f'{db_name}.msp')
-            if not os.path.isfile(file_path):
-                urlretrieve(url, file_path)
+            if db_name.startswith('ALL') or db_name.startswith('GNPS') or db_name.startswith('MS-DIAL'):
+                url = sl_download_links[db_name]
+                file_path = os.path.join(outdir, f'{db_name}.msp')
+                if not os.path.isfile(file_path):
+                    urlretrieve(url, file_path)
+            elif db_name.startswith('MassBank') or db_name.startswith('MoNA'):
+                url = sl_download_links[db_name]
+                file_path = os.path.join(outdir, f'{db_name}.zip')
+                if not os.path.isfile(file_path):
+                    urlretrieve(url, file_path)
+                    mona.unzip_file(file_path)
         elif db_name == 'TL|COCONUT':
             coconut_file_path = coconut.download(outdir)
             coconut_input_file = coconut.unzip_file(coconut_file_path)

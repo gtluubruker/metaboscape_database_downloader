@@ -1,3 +1,7 @@
+import os
+import zipfile
+
+
 DOWNLOAD_LINKS = {'MassBank_of_North_America_All_Spectra': 'https://mona.fiehnlab.ucdavis.edu/rest/downloads/retrieve/03d5a22c-c1e1-4101-ac70-9a4eae437ef5',
                   'MassBank_of_North_America_In_Silico_Spectra': 'https://mona.fiehnlab.ucdavis.edu/rest/downloads/retrieve/f4ed54f6-070f-4228-9f4c-b9b633e5fe23',
                   'MassBank_of_North_America_Experimental_Spectra': 'https://mona.fiehnlab.ucdavis.edu/rest/downloads/retrieve/ab8dc037-14e9-416f-a663-8607d16f3d39',
@@ -56,3 +60,10 @@ DOWNLOAD_LINKS = {'MassBank_of_North_America_All_Spectra': 'https://mona.fiehnla
                   'MoNA-All_LC-MSMS_Agilent_QTOF': 'https://mona.fiehnlab.ucdavis.edu/rest/downloads/retrieve/d35d2f3e-8a38-4e73-8b8d-ebd90a8cef81',
                   'MoNA-LC-MSMS_Negative': 'https://mona.fiehnlab.ucdavis.edu/rest/downloads/retrieve/b309b71a-e7e0-448e-b6e4-e295a3a62013',
                   'MoNA-LC-MSMS_Positive': 'https://mona.fiehnlab.ucdavis.edu/rest/downloads/retrieve/873fbe29-4808-46d1-a4a3-a4134ac8c755'}
+
+
+def unzip_file(file_path):
+    print(f'Unzipping {file_path}')
+    outdir = os.path.splitext(file_path)[0]
+    with zipfile.ZipFile(file_path, 'r') as zip_file:
+        zip_file.extractall(outdir)

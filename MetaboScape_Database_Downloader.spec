@@ -6,9 +6,12 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[
+        ('MetaboScape_Database_Downloader.py', '.'),
         ('README.md', '.'),
         ('LICENSE', '.'),
-        ('third-party-licenses.txt', '.')
+        ('third-party-licenses.txt', '.'),
+        ('mdd', 'mdd'),
+        ('mdd/target_lists/metaboscape_target_list_template.csv', 'target_lists')
     ],
     hiddenimports=[],
     hookspath=[],
@@ -36,6 +39,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    contents_directory='.'
 )
 coll = COLLECT(
     exe,
